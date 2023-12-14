@@ -9,30 +9,30 @@ export const regs = {
   url: /^(?:(http|https|ftp):\/\/)?((?:[\w-]+\.)+[a-z0-9]+)((?:\/[^/?#]*)+)?(\?[^#]+)?(#.+)?$/i
 }
 
-export const isEmail = (s) => {
+export const isEmail = (s: string) => {
   return regs.email.test(s)
 }
 
-export const isMobile = (s) => {
+export const isMobile = (s: string) => {
   return regs.mobile.test(s)
 }
 
-export const isTel = (s) => {
+export const isTel = (s: string) => {
   return regs.tel.test(s)
 }
 
-export const isIdcard = (s) => {
+export const isIdcard = (s: string) => {
   return regs.idcard.test(s)
 }
 
-export const isIdcar = (s) => {
+export const isIdcar = (s: string) => {
   return regs.idcar.test(s)
 }
 
-export const isChinese = (s) => {
+export const isChinese = (s: string) => {
   return regs.chinese.test(s)
 }
 
-export const isUrl = (s) => {
+export const isUrl = (s: string) => {
   return regs.url.test(s)
 }

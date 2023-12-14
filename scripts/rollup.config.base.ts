@@ -7,9 +7,12 @@ import eslint from '@rollup/plugin-eslint'
 import { babel } from '@rollup/plugin-babel'
 import terser from '@rollup/plugin-terser'
 import clear from 'rollup-plugin-clear'
+import typescript2 from 'rollup-plugin-typescript2'
 import json from '@rollup/plugin-json' // 支持在源码中直接引入json文件，不影响下面的
-import { name, version, author } from '../package.json' assert { type: "json" }
+import * as packageInfo from '../package.json' assert { type: "json" }
+import { IOptions } from 'rollup-plugin-typescript2/dist/ioptions'
 
+const { name, version, author } = packageInfo
 const pkgName = 'mypkg'
 const banner =
   '/*!\n' +
@@ -19,30 +22,30 @@ const banner =
   ' */'
 
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   // 同时打包多种规范的产物
   output: [
     {
-      file: `dist/${pkgName}.umd.js`,
+      file: `dist/index.umd.js`,
       format: 'umd',
       name: pkgName,
       banner
     },
     {
-      file: `dist/${pkgName}.umd.min.js`,
+      file: `dist/index.umd.min.js`,
       format: 'umd',
       name: pkgName,
       banner,
       plugins: [terser()]
     },
     {
-      file: `dist/${pkgName}.cjs.js`,
+      file: `dist/index.cjs.js`,
       format: 'cjs',
       name: pkgName,
       banner
     },
     {
-      file: `dist/${pkgName}.esm.js`,
+      file: `dist/index.esm.js`,
       format: 'es',
       banner
     }
@@ -50,6 +53,9 @@ export default {
   // 注意 plugin 的使用顺序
   plugins: [
     json(),
+    typescript2({
+      tsConfig: '../tsconfig.json',
+    } as Partial<IOptions>),
     clear({
       targets: ['dist']
     }),

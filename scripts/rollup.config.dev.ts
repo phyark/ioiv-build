@@ -1,4 +1,4 @@
-import baseConfig from './rollup.config.base.js'
+import baseConfig from './rollup.config.base'
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 
