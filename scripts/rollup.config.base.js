@@ -8,10 +8,7 @@ import { babel } from '@rollup/plugin-babel'
 import terser from '@rollup/plugin-terser'
 import clear from 'rollup-plugin-clear'
 import json from '@rollup/plugin-json' // 支持在源码中直接引入json文件，不影响下面的
-import data from '../package.json' assert { type: "json" }
-console.log(data);
-
-const { name, version, author } = data;
+import { name, version, author } from '../package.json' assert { type: "json" }
 
 const pkgName = 'mypkg'
 const banner =

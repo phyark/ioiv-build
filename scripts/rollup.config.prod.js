@@ -1,4 +1,4 @@
-import baseConfig from './rollup.config.base'
+import baseConfig from './rollup.config.base.js'
 import filesize from 'rollup-plugin-filesize'
 
 export default {
